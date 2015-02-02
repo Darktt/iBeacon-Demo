@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="v6c-Xq-hCH">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <scenes>
+        <!--Receiver Navigation-->
+        <scene sceneID="nVo-F0-Urd">
+            <objects>
+                <navigationController id="Jm2-f1-Rlg" userLabel="Receiver Navigation" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Receiver" id="CRC-Sk-2Iw"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lL8-iY-ze9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="FvT-Mb-gMZ" kind="relationship" relationship="rootViewController" id="kTU-Db-OkY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SEh-zC-60v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="506" y="460"/>
+        </scene>
+        <!--Receiver-->
+        <scene sceneID="xOn-QG-S0V">
+            <objects>
+                <viewController title="Receiver" id="FvT-Mb-gMZ" customClass="ReceiverViewController" customModule="iBeacon_Tester" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TS3-gf-naa"/>
+                        <viewControllerLayoutGuide type="bottom" id="3ly-mU-1UN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kbU-RK-3FZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="EBh-Th-WBR">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="FvT-Mb-gMZ" id="2LA-ud-asS"/>
+                                    <outlet property="delegate" destination="FvT-Mb-gMZ" id="hjo-dR-06N"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="EBh-Th-WBR" secondAttribute="bottom" id="Rs0-Wp-hUC"/>
+                            <constraint firstItem="EBh-Th-WBR" firstAttribute="top" secondItem="kbU-RK-3FZ" secondAttribute="top" id="k54-hU-xk0"/>
+                            <constraint firstItem="EBh-Th-WBR" firstAttribute="leading" secondItem="kbU-RK-3FZ" secondAttribute="leading" id="qy6-JR-WPH"/>
+                            <constraint firstAttribute="trailing" secondItem="EBh-Th-WBR" secondAttribute="trailing" id="xKn-Oc-Jex"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Receiver" image="second" id="b4v-ys-Oni"/>
+                    <navigationItem key="navigationItem" title="Receiver" id="fr4-St-RGU"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <outlet property="tableView" destination="EBh-Th-WBR" id="GDQ-te-dZI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8sR-iA-Xmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1248" y="460"/>
+        </scene>
+        <!--Broadcast-->
+        <scene sceneID="v5V-aU-VoG">
+            <objects>
+                <viewController title="Broadcast" id="1Fv-s8-Hdu" customClass="BroadcastViewController" customModule="iBeacon_Tester" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4ZZ-ry-Sf5"/>
+                        <viewControllerLayoutGuide type="bottom" id="Djd-5s-0NP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LSw-g1-8gW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Broadcast" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="AMh-Zg-RmK">
+                                <rect key="frame" x="200" y="140" width="200" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="DQY-8c-ZzD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hl5-n9-m4q">
+                                <rect key="frame" x="235" y="417" width="131" height="34"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="Start Broadcast">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="broadcastBeacon:" destination="1Fv-s8-Hdu" eventType="touchUpInside" id="iza-D7-FUH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Djd-5s-0NP" firstAttribute="top" secondItem="Hl5-n9-m4q" secondAttribute="bottom" constant="100" id="ho2-4Z-39F"/>
+                            <constraint firstAttribute="centerX" secondItem="Hl5-n9-m4q" secondAttribute="centerX" id="o8V-Dm-nR6"/>
+                            <constraint firstItem="AMh-Zg-RmK" firstAttribute="top" secondItem="4ZZ-ry-Sf5" secondAttribute="bottom" constant="120" id="vgA-dc-xAa"/>
+                            <constraint firstAttribute="centerX" secondItem="AMh-Zg-RmK" secondAttribute="centerX" id="y78-xU-DCv"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Boradcast" image="first" id="heV-pI-9oX"/>
+                    <connections>
+                        <outlet property="statusLabel" destination="AMh-Zg-RmK" id="vIj-nd-kUM"/>
+                        <outlet property="triggerButton" destination="Hl5-n9-m4q" id="3Od-dS-YHL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WWL-0y-aal" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="506" y="-216"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="hR0-a0-IIl">
+            <objects>
+                <tabBarController title="Root View Controller" id="v6c-Xq-hCH" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="mnz-dj-kzL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="1Fv-s8-Hdu" kind="relationship" relationship="viewControllers" id="fpE-PV-gei"/>
+                        <segue destination="Jm2-f1-Rlg" kind="relationship" relationship="viewControllers" id="pYK-fE-tBs"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L9r-D5-V0J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-314" y="115"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="first" width="30" height="30"/>
+        <image name="second" width="30" height="30"/>
+    </resources>
+</document>
