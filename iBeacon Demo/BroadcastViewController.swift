@@ -12,7 +12,6 @@ import CoreBluetooth
 
 class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
 {
-    private let kUUIDKey: String = "UUID"
     private var broadcasting: Bool = false
     
     private var beacon: CLBeaconRegion?
@@ -27,8 +26,7 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
         
         let userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        // UUID1: 7FA08BC7-A55F-45FC-85C0-0BF26F899530
-        // UUID2: E1BBA06E-7C8C-4D3F-A579-D632AC2AF96E
+        // You can use uuidgen in terminal to generater new one.
         let UUID: NSUUID = NSUUID(UUIDString: "7FA08BC7-A55F-45FC-85C0-0BF26F899530")!
         
         let major: CLBeaconMajorValue = CLBeaconMajorValue(arc4random() % 100 + 1)
@@ -37,6 +35,14 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
         self.beacon = CLBeaconRegion(proximityUUID: UUID, major: major, minor: minor, identifier: "tw.darktt.beaconDemo")
         
         self.peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
+        
+//        let status: CBPeripheralManagerAuthorizationStatus = CBPeripheralManager.authorizationStatus()
+    }
+    
+    deinit
+    {
+        self.beacon = nil
+        self.peripheralManager = nil
     }
     
     @IBAction func broadcastBeacon(sender: UIButton) -> Void
@@ -101,7 +107,15 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
         let state: CBPeripheralManagerState = self.peripheralManager!.state
         
         if (state == .PoweredOn) {
-            let peripheralData: NSDictionary! = self.beacon?.peripheralDataWithMeasuredPower(nil)
+            let UUID:NSUUID! = self.beacon?.proximityUUID
+            let serviceUUIDs: [CBUUID] = [CBUUID(NSUUID: UUID)]
+            let beaconData: NSDictionary! = self.beacon?.peripheralDataWithMeasuredPower(nil)
+            
+            let peripheralData: NSMutableDictionary = NSMutableDictionary()
+            peripheralData.setObject("iBeacon Demo", forKey: CBAdvertisementDataLocalNameKey)
+            peripheralData.setObject(serviceUUIDs, forKey: CBAdvertisementDataServiceUUIDsKey)
+            peripheralData.addEntriesFromDictionary(beaconData)
+            
             self.peripheralManager!.startAdvertising(peripheralData)
         }
     }
