@@ -68,7 +68,7 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
         // UUID2: E1BBA06E-7C8C-4D3F-A579-D632AC2AF96E
         let UUID: NSUUID = NSUUID(UUIDString: "7FA08BC7-A55F-45FC-85C0-0BF26F899530")!
         
-        let beaconRegion: CLBeaconRegion = CLBeaconRegion(proximityUUID: UUID, identifier: "tw.darktt.beaconTester")
+        let beaconRegion: CLBeaconRegion = CLBeaconRegion(proximityUUID: UUID, identifier: "tw.darktt.beaconDemo")
         
         self.location!.startMonitoringForRegion(beaconRegion)
     }
@@ -91,14 +91,16 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
         
         var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as UITableViewCell?
         if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier)
+            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier)
         }
         
         let row: Int = indexPath.row
         let beacon: CLBeacon = self.beacons[row]
+        let detailText: String = "Major: " + "\(beacon.major)" + "\tMinor: " + "\(beacon.minor)"
         let beaconUUID: String = beacon.proximityUUID.UUIDString
         
-        cell?.textLabel?.text = beaconUUID
+        cell?.textLabel?.text = detailText
+        cell?.detailTextLabel?.text = beaconUUID
         
         return cell!
     }

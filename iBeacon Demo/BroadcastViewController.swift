@@ -29,9 +29,12 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
         
         // UUID1: 7FA08BC7-A55F-45FC-85C0-0BF26F899530
         // UUID2: E1BBA06E-7C8C-4D3F-A579-D632AC2AF96E
-        let UUID: NSUUID = NSUUID(UUIDString: "E1BBA06E-7C8C-4D3F-A579-D632AC2AF96E")!
+        let UUID: NSUUID = NSUUID(UUIDString: "7FA08BC7-A55F-45FC-85C0-0BF26F899530")!
         
-        self.beacon = CLBeaconRegion(proximityUUID: UUID, major: 5, minor: 1, identifier: "tw.darktt.beaconTester")
+        let major: CLBeaconMajorValue = CLBeaconMajorValue(arc4random() % 100 + 1)
+        let minor: CLBeaconMinorValue = CLBeaconMinorValue(arc4random() % 2 + 1)
+        
+        self.beacon = CLBeaconRegion(proximityUUID: UUID, major: major, minor: minor, identifier: "tw.darktt.beaconDemo")
         
         self.peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
     }
