@@ -35,8 +35,6 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
         self.beacon = CLBeaconRegion(proximityUUID: UUID, major: major, minor: minor, identifier: "tw.darktt.beaconDemo")
         
         self.peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
-        
-//        let status: CBPeripheralManagerAuthorizationStatus = CBPeripheralManager.authorizationStatus()
     }
     
     deinit
@@ -111,13 +109,34 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
             let serviceUUIDs: [CBUUID] = [CBUUID(NSUUID: UUID)]
             let beaconData: NSDictionary! = self.beacon?.peripheralDataWithMeasuredPower(nil)
             
+            let major: NSNumber! = self.beacon?.major
+            let minor: NSNumber! = self.beacon?.minor
+            
+            let serviceData: NSData = String("\(major):\(minor)").dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!
+            
             let peripheralData: NSMutableDictionary = NSMutableDictionary()
             peripheralData.setObject("iBeacon Demo", forKey: CBAdvertisementDataLocalNameKey)
             peripheralData.setObject(serviceUUIDs, forKey: CBAdvertisementDataServiceUUIDsKey)
+            peripheralData.setObject(serviceData, forKey: CBAdvertisementDataServiceDataKey)
+            peripheralData.setObject(NSNumber(integer: 0), forKey: CBAdvertisementDataIsConnectable)
             peripheralData.addEntriesFromDictionary(beaconData)
             
             self.peripheralManager!.startAdvertising(peripheralData)
         }
+    }
+    
+    private func broadcastService() -> CBService
+    {
+        var UUID: CBUUID = CBUUID(NSUUID: NSUUID())
+        
+        let properties: CBCharacteristicProperties = .Broadcast
+        let characteristic: CBMutableCharacteristic = CBMutableCharacteristic(type: UUID, properties: properties, value: nil, permissions: .Readable)
+        
+        UUID = CBUUID(NSUUID: NSUUID())
+        let service: CBMutableService = CBMutableService(type: UUID, primary: true)
+        service.characteristics = [characteristic]
+        
+        return service
     }
     
     // MARK: CBPeripheralManager Delegate

@@ -25,7 +25,7 @@
         <!--Receiver-->
         <scene sceneID="xOn-QG-S0V">
             <objects>
-                <viewController title="Receiver" id="FvT-Mb-gMZ" customClass="ReceiverViewController" customModule="iBeacon_Tester" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Receiver" id="FvT-Mb-gMZ" customClass="ReceiverViewController" customModule="iBeacon_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TS3-gf-naa"/>
                         <viewControllerLayoutGuide type="bottom" id="3ly-mU-1UN"/>
@@ -65,7 +65,7 @@
         <!--Broadcast-->
         <scene sceneID="v5V-aU-VoG">
             <objects>
-                <viewController title="Broadcast" id="1Fv-s8-Hdu" customClass="BroadcastViewController" customModule="iBeacon_Tester" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Broadcast" id="1Fv-s8-Hdu" customClass="BroadcastViewController" customModule="iBeacon_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4ZZ-ry-Sf5"/>
                         <viewControllerLayoutGuide type="bottom" id="Djd-5s-0NP"/>
