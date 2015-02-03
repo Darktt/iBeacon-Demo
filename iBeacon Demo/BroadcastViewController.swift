@@ -86,11 +86,11 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
         UIView.animateWithDuration(0.25, animations: animations)
         
         self.broadcasting = !self.broadcasting
-        self.advertising(self.broadcasting)
+        self.advertising(start: self.broadcasting)
     }
     
     // MARK: Broadcast Beacon
-    func advertising(start: Bool) -> Void
+    func advertising(#start: Bool) -> Void
     {
         if self.peripheralManager == nil {
             return;
@@ -112,31 +112,13 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
             let major: NSNumber! = self.beacon?.major
             let minor: NSNumber! = self.beacon?.minor
             
-            let serviceData: NSData = String("\(major):\(minor)").dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!
-            
             let peripheralData: NSMutableDictionary = NSMutableDictionary()
             peripheralData.setObject("iBeacon Demo", forKey: CBAdvertisementDataLocalNameKey)
             peripheralData.setObject(serviceUUIDs, forKey: CBAdvertisementDataServiceUUIDsKey)
-            peripheralData.setObject(serviceData, forKey: CBAdvertisementDataServiceDataKey)
-            peripheralData.setObject(NSNumber(integer: 0), forKey: CBAdvertisementDataIsConnectable)
             peripheralData.addEntriesFromDictionary(beaconData)
             
             self.peripheralManager!.startAdvertising(peripheralData)
         }
-    }
-    
-    private func broadcastService() -> CBService
-    {
-        var UUID: CBUUID = CBUUID(NSUUID: NSUUID())
-        
-        let properties: CBCharacteristicProperties = .Broadcast
-        let characteristic: CBMutableCharacteristic = CBMutableCharacteristic(type: UUID, properties: properties, value: nil, permissions: .Readable)
-        
-        UUID = CBUUID(NSUUID: NSUUID())
-        let service: CBMutableService = CBMutableService(type: UUID, primary: true)
-        service.characteristics = [characteristic]
-        
-        return service
     }
     
     // MARK: CBPeripheralManager Delegate
