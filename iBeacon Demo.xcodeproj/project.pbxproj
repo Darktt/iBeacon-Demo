@@ -15,6 +15,7 @@
 		522CD5AB1A7CB26600DBA5AD /* BroadcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD5AA1A7CB26600DBA5AD /* BroadcastViewController.swift */; };
 		522CD5AD1A7CB2A400DBA5AD /* ReceiverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD5AC1A7CB2A400DBA5AD /* ReceiverViewController.swift */; };
 		522CD5B21A7CBF7300DBA5AD /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD5B11A7CBF7300DBA5AD /* UIColorExtension.swift */; };
+		5249F70E1A8DD26D003C68AE /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5249F70D1A8DD26D003C68AE /* Configuration.swift */; };
 		52A752101A7F200D00BF5F12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522CD58A1A7CB0EC00DBA5AD /* Main.storyboard */; };
 		52A752111A7F201200BF5F12 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522CD58F1A7CB0EC00DBA5AD /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		522CD5AA1A7CB26600DBA5AD /* BroadcastViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BroadcastViewController.swift; sourceTree = "<group>"; };
 		522CD5AC1A7CB2A400DBA5AD /* ReceiverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiverViewController.swift; sourceTree = "<group>"; };
 		522CD5B11A7CBF7300DBA5AD /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		5249F70D1A8DD26D003C68AE /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			children = (
 				522CD5861A7CB0EC00DBA5AD /* AppDelegate.swift */,
 				522CD5B11A7CBF7300DBA5AD /* UIColorExtension.swift */,
+				5249F70D1A8DD26D003C68AE /* Configuration.swift */,
 				522CD5AA1A7CB26600DBA5AD /* BroadcastViewController.swift */,
 				522CD5AC1A7CB2A400DBA5AD /* ReceiverViewController.swift */,
 				522CD58A1A7CB0EC00DBA5AD /* Main.storyboard */,
@@ -233,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				522CD5AB1A7CB26600DBA5AD /* BroadcastViewController.swift in Sources */,
+				5249F70E1A8DD26D003C68AE /* Configuration.swift in Sources */,
 				522CD5AD1A7CB2A400DBA5AD /* ReceiverViewController.swift in Sources */,
 				522CD5871A7CB0EC00DBA5AD /* AppDelegate.swift in Sources */,
 				522CD5B21A7CBF7300DBA5AD /* UIColorExtension.swift in Sources */,

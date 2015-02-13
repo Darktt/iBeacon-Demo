@@ -20,19 +20,24 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var triggerButton: UIButton!
     
+    override func viewDidAppear(animated: Bool)
+    {
+        self.setNeedsStatusBarAppearanceUpdate()
+    }
+    
     override func viewDidLoad()
     {
         self.view.backgroundColor = UIColor.iOS7WhiteColor()
         
         let userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        // You can use uuidgen in terminal to generater new one.
-        let UUID: NSUUID = NSUUID(UUIDString: "7FA08BC7-A55F-45FC-85C0-0BF26F899530")!
+        let UUID: NSUUID = iBeaconConfiguration().UUID
         
         let major: CLBeaconMajorValue = CLBeaconMajorValue(arc4random() % 100 + 1)
         let minor: CLBeaconMinorValue = CLBeaconMinorValue(arc4random() % 2 + 1)
         
         self.beacon = CLBeaconRegion(proximityUUID: UUID, major: major, minor: minor, identifier: "tw.darktt.beaconDemo")
+        self.beacon!.notifyEntryStateOnDisplay = true
         
         self.peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
     }
@@ -43,6 +48,32 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
         self.peripheralManager = nil
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle
+    {
+        if self.broadcasting {
+            return .LightContent
+        }
+        
+        return .BlackOpaque
+    }
+    
+    override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation
+    {
+        return .Slide
+    }
+    
+    override func prefersStatusBarHidden() -> Bool
+    {
+        return false
+    }
+    
+    override func didReceiveMemoryWarning()
+    {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: - Actions
     @IBAction func broadcastBeacon(sender: UIButton) -> Void
     {
         let state: CBPeripheralManagerState = self.peripheralManager!.state
@@ -83,7 +114,12 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
             self.view.backgroundColor = backgroundColor
         }
         
-        UIView.animateWithDuration(0.25, animations: animations)
+        let completion: (Bool) -> Void = {
+            finish in
+            self.setNeedsStatusBarAppearanceUpdate()
+        }
+        
+        UIView.animateWithDuration(0.25, animations: animations, completion: completion)
         
         self.broadcasting = !self.broadcasting
         self.advertising(start: self.broadcasting)

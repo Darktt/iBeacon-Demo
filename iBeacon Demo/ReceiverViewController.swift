@@ -20,8 +20,6 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewWillAppear(animated: Bool)
     {
-        self.setNeedsStatusBarAppearanceUpdate()
-        
         self.refreshControl!.beginRefreshing()
         self.refreshBeacons(self.refreshControl!)
         let delayInSeconds: Double = 2.0
@@ -31,6 +29,11 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
         dispatch_after(popTime, dispatch_get_main_queue()) { () -> Void in
             
         }
+    }
+    
+    override func viewDidAppear(animated: Bool)
+    {
+//        self.setNeedsStatusBarAppearanceUpdate()
     }
     
     override func viewWillDisappear(animated: Bool)
@@ -62,11 +65,19 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
     {
         self.location = nil
     }
-    
+    /*
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .BlackOpaque
+        return .LightContent
     }
     
+    override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
+        return .Slide
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
+    */
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
@@ -78,11 +89,13 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
     @objc private func refreshBeacons(sender: UIRefreshControl) -> Void
     {
         // This uuid must same as broadcaster.
-        let UUID: NSUUID = NSUUID(UUIDString: "7FA08BC7-A55F-45FC-85C0-0BF26F899530")!
+        let UUID: NSUUID = iBeaconConfiguration().UUID
         
         let beaconRegion: CLBeaconRegion = CLBeaconRegion(proximityUUID: UUID, identifier: "tw.darktt.beaconDemo")
+        beaconRegion.notifyEntryStateOnDisplay = true
         
         self.location!.startMonitoringForRegion(beaconRegion)
+        self.location!.startRangingBeaconsInRegion(beaconRegion)
     }
     
     //MARK: - Other Method
@@ -146,27 +159,24 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
     func locationManager(manager: CLLocationManager!, didDetermineState state: CLRegionState, forRegion region: CLRegion!)
     {
         if state == .Inside {
-            manager.startRangingBeaconsInRegion(region as CLBeaconRegion)
-            
+            println("locationManager didDetermineState INSIDE for \(region.identifier)")
             return
         }
         
-        manager.stopRangingBeaconsInRegion(region as CLBeaconRegion)
-    }
-    
-    func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!)
-    {
-        manager.startRangingBeaconsInRegion(region as CLBeaconRegion)
-    }
-    
-    func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!)
-    {
+        if state == .Outside {
+            println("locationManager didDetermineState OUTSIDE for \(region.identifier)")
+        } else {
+            println("locationManager didDetermineState OTHER for \(region.identifier)")
+        }
+        
         manager.stopRangingBeaconsInRegion(region as CLBeaconRegion)
     }
     
     func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!)
     {
         self.beacons = beacons as [CLBeacon]
+        
+        println("\(self.beacons.first)")
         
         manager.stopRangingBeaconsInRegion(region)
         self.refreshControl?.endRefreshing()
