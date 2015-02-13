@@ -22,11 +22,15 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
     
     override func viewDidAppear(animated: Bool)
     {
+        super.viewDidAppear(animated)
+        
         self.setNeedsStatusBarAppearanceUpdate()
     }
     
     override func viewDidLoad()
     {
+        super.viewDidLoad()
+        
         self.view.backgroundColor = UIColor.iOS7WhiteColor()
         
         let userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -59,7 +63,7 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
     
     override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation
     {
-        return .Slide
+        return .Fade
     }
     
     override func prefersStatusBarHidden() -> Bool

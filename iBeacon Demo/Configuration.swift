@@ -21,3 +21,16 @@ class iBeaconConfiguration
         }
     }
 }
+
+import UIKit
+
+extension UITabBarController
+{
+    public override func childViewControllerForStatusBarHidden() -> UIViewController? {
+        return self.selectedViewController
+    }
+    
+    public override func childViewControllerForStatusBarStyle() -> UIViewController? {
+        return self.selectedViewController
+    }
+}

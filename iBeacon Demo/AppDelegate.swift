@@ -15,8 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool
     {
-        application.setStatusBarHidden(false, withAnimation: .None)
-//        application.setStatusBarStyle(.BlackOpaque, animated: false)
         
         return true
     }
@@ -24,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
         // Override point for customization after application launch.
+        application.setStatusBarHidden(false, withAnimation: .None)
         
         return true
     }

@@ -20,6 +20,8 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewWillAppear(animated: Bool)
     {
+        super.viewWillAppear(animated)
+        
         self.refreshControl!.beginRefreshing()
         self.refreshBeacons(self.refreshControl!)
         let delayInSeconds: Double = 2.0
@@ -33,16 +35,22 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidAppear(animated: Bool)
     {
-//        self.setNeedsStatusBarAppearanceUpdate()
+        super.viewDidAppear(animated)
+        
+        self.setNeedsStatusBarAppearanceUpdate()
     }
     
     override func viewWillDisappear(animated: Bool)
     {
+        super.viewDidDisappear(animated)
+        
         self.refreshControl!.endRefreshing()
     }
     
     override func viewDidLoad()
     {
+        super.viewDidLoad()
+        
         self.navigationController?.navigationBar.barTintColor = UIColor.iOS7BlueColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
@@ -65,7 +73,7 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
     {
         self.location = nil
     }
-    /*
+    
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
@@ -77,7 +85,7 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
     override func prefersStatusBarHidden() -> Bool {
         return false
     }
-    */
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
@@ -160,6 +168,8 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
     {
         if state == .Inside {
             println("locationManager didDetermineState INSIDE for \(region.identifier)")
+            
+            manager.startRangingBeaconsInRegion(region as CLBeaconRegion)
             return
         }
         
