@@ -62,7 +62,7 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
         let attributedTitle: NSAttributedString = NSAttributedString(string: "Receiving Beacon", attributes: attributes)
         
         let refreshControl: UIRefreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: "refreshBeacons:", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: Selector("refreshBeacons:"), forControlEvents: UIControlEvents.ValueChanged)
         refreshControl.attributedTitle = attributedTitle
         
         self.refreshControl = refreshControl
@@ -100,10 +100,8 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
         let UUID: NSUUID = iBeaconConfiguration().UUID
         
         let beaconRegion: CLBeaconRegion = CLBeaconRegion(proximityUUID: UUID, identifier: "tw.darktt.beaconDemo")
-        beaconRegion.notifyEntryStateOnDisplay = true
         
         self.location!.startMonitoringForRegion(beaconRegion)
-        self.location!.startRangingBeaconsInRegion(beaconRegion)
     }
     
     //MARK: - Other Method
@@ -167,16 +165,8 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
     func locationManager(manager: CLLocationManager!, didDetermineState state: CLRegionState, forRegion region: CLRegion!)
     {
         if state == .Inside {
-            println("locationManager didDetermineState INSIDE for \(region.identifier)")
-            
             manager.startRangingBeaconsInRegion(region as CLBeaconRegion)
             return
-        }
-        
-        if state == .Outside {
-            println("locationManager didDetermineState OUTSIDE for \(region.identifier)")
-        } else {
-            println("locationManager didDetermineState OTHER for \(region.identifier)")
         }
         
         manager.stopRangingBeaconsInRegion(region as CLBeaconRegion)

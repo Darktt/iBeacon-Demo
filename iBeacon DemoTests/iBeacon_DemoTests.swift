@@ -1,6 +1,6 @@
 //
-//  iBeacon_TesterTests.swift
-//  iBeacon TesterTests
+//  iBeacon_DemoTests.swift
+//  iBeacon DemoTests
 //
 //  Created by EdenLi on 2015/1/31.
 //  Copyright (c) 2015年 Darktt. All rights reserved.

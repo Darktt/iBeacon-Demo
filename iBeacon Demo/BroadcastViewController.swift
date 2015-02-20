@@ -41,7 +41,6 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
         let minor: CLBeaconMinorValue = CLBeaconMinorValue(arc4random() % 2 + 1)
         
         self.beacon = CLBeaconRegion(proximityUUID: UUID, major: major, minor: minor, identifier: "tw.darktt.beaconDemo")
-        self.beacon!.notifyEntryStateOnDisplay = true
         
         self.peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
     }
@@ -58,7 +57,7 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
             return .LightContent
         }
         
-        return .BlackOpaque
+        return .Default
     }
     
     override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation
@@ -116,17 +115,17 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
             let backgroundColor: UIColor = (self.broadcasting) ? UIColor.iOS7WhiteColor() : UIColor.iOS7BlueColor()
             
             self.view.backgroundColor = backgroundColor
+            
+            self.broadcasting = !self.broadcasting
+            self.setNeedsStatusBarAppearanceUpdate()
         }
         
         let completion: (Bool) -> Void = {
             finish in
-            self.setNeedsStatusBarAppearanceUpdate()
+            self.advertising(start: self.broadcasting)
         }
         
         UIView.animateWithDuration(0.25, animations: animations, completion: completion)
-        
-        self.broadcasting = !self.broadcasting
-        self.advertising(start: self.broadcasting)
     }
     
     // MARK: Broadcast Beacon
