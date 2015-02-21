@@ -62,8 +62,8 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
         let attributedTitle: NSAttributedString = NSAttributedString(string: "Receiving Beacon", attributes: attributes)
         
         let refreshControl: UIRefreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: Selector("refreshBeacons:"), forControlEvents: UIControlEvents.ValueChanged)
         refreshControl.attributedTitle = attributedTitle
+        refreshControl.addTarget(self, action: Selector("refreshBeacons:"), forControlEvents: UIControlEvents.ValueChanged)
         
         self.refreshControl = refreshControl
         self.tableView.addSubview(refreshControl)
@@ -74,15 +74,18 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
         self.location = nil
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+    override func preferredStatusBarStyle() -> UIStatusBarStyle
+    {
         return .LightContent
     }
     
-    override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
-        return .Slide
+    override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation
+    {
+        return .None
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override func prefersStatusBarHidden() -> Bool
+    {
         return false
     }
     

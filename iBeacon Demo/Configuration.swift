@@ -24,13 +24,23 @@ class iBeaconConfiguration
 
 import UIKit
 
-class CustomTabBarController : UITabBarController
+extension UITabBarController
 {
-    override func childViewControllerForStatusBarHidden() -> UIViewController? {
+    public override func childViewControllerForStatusBarHidden() -> UIViewController?
+    {
+        if let _navigationController = self.selectedViewController as? UINavigationController {
+            return _navigationController.topViewController
+        }
+        
         return self.selectedViewController
     }
     
-    override func childViewControllerForStatusBarStyle() -> UIViewController? {
+    public override func childViewControllerForStatusBarStyle() -> UIViewController?
+    {
+        if let _navigationController = self.selectedViewController as? UINavigationController {
+            return _navigationController.topViewController
+        }
+        
         return self.selectedViewController
     }
 }
