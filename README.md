@@ -7,7 +7,7 @@ iBeacon demo in Swift
 # How to use
 
 ## Prepare
-1. Two real iDevice.
+1. Two real iDevice or more.
 2. An Apple develop account (Joined iOS Developer Program).
 
 ## As Broadcaster
@@ -36,7 +36,7 @@ iOS system auto detect iBeacon singal, when inside singal range,</br>
 
 ![iBeacon Detect](https://raw.github.com/Darktt/iBeacon-Demo/master/Images/iBeacon Detect.png)
 
-swip up can launch this app, like Handoff continuity. </br>
+swipe up to launch this app, like Handoff continuity. </br>
 
 ## Support Devices
 * iPhone 4s or laster.
