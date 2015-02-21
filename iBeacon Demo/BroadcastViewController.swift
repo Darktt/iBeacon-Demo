@@ -1,8 +1,8 @@
 //
 //  BroadcastViewController.swift
-//  iBeacon Tester
+//  iBeacon Demo
 //
-//  Created by EdenLi on 2015/1/31.
+//  Created by Darktt on 15/01/31.
 //  Copyright (c) 2015年 Darktt. All rights reserved.
 //
 
@@ -35,7 +35,7 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
         
         let userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        let UUID: NSUUID = iBeaconConfiguration().UUID
+        let UUID: NSUUID = iBeaconConfiguration.UUID()
         
         let major: CLBeaconMajorValue = CLBeaconMajorValue(arc4random() % 100 + 1)
         let minor: CLBeaconMinorValue = CLBeaconMinorValue(arc4random() % 2 + 1)

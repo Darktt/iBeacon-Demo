@@ -14,10 +14,12 @@
 		522CD5A91A7CB24500DBA5AD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 522CD5A71A7CB24500DBA5AD /* CoreLocation.framework */; };
 		522CD5AB1A7CB26600DBA5AD /* BroadcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD5AA1A7CB26600DBA5AD /* BroadcastViewController.swift */; };
 		522CD5AD1A7CB2A400DBA5AD /* ReceiverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD5AC1A7CB2A400DBA5AD /* ReceiverViewController.swift */; };
-		522CD5B21A7CBF7300DBA5AD /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD5B11A7CBF7300DBA5AD /* UIColorExtension.swift */; };
 		5249F70E1A8DD26D003C68AE /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5249F70D1A8DD26D003C68AE /* Configuration.swift */; };
 		52A752101A7F200D00BF5F12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522CD58A1A7CB0EC00DBA5AD /* Main.storyboard */; };
 		52A752111A7F201200BF5F12 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522CD58F1A7CB0EC00DBA5AD /* LaunchScreen.xib */; };
+		55E9DE2F1A982DBE002AD99C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E9DE2C1A982DBE002AD99C /* UIColorExtension.swift */; };
+		55E9DE301A982DBE002AD99C /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E9DE2D1A982DBE002AD99C /* UINavigationControllerExtension.swift */; };
+		55E9DE311A982DBE002AD99C /* UITabBarControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E9DE2E1A982DBE002AD99C /* UITabBarControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +46,10 @@
 		522CD5A71A7CB24500DBA5AD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		522CD5AA1A7CB26600DBA5AD /* BroadcastViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BroadcastViewController.swift; sourceTree = "<group>"; };
 		522CD5AC1A7CB2A400DBA5AD /* ReceiverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiverViewController.swift; sourceTree = "<group>"; };
-		522CD5B11A7CBF7300DBA5AD /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		5249F70D1A8DD26D003C68AE /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		55E9DE2C1A982DBE002AD99C /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		55E9DE2D1A982DBE002AD99C /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
+		55E9DE2E1A982DBE002AD99C /* UITabBarControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBarControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +95,8 @@
 		522CD5831A7CB0EC00DBA5AD /* iBeacon Demo */ = {
 			isa = PBXGroup;
 			children = (
+				55E9DE2B1A982DBE002AD99C /* Extensions */,
 				522CD5861A7CB0EC00DBA5AD /* AppDelegate.swift */,
-				522CD5B11A7CBF7300DBA5AD /* UIColorExtension.swift */,
 				5249F70D1A8DD26D003C68AE /* Configuration.swift */,
 				522CD5AA1A7CB26600DBA5AD /* BroadcastViewController.swift */,
 				522CD5AC1A7CB2A400DBA5AD /* ReceiverViewController.swift */,
@@ -127,6 +131,16 @@
 				522CD59B1A7CB0EC00DBA5AD /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		55E9DE2B1A982DBE002AD99C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				55E9DE2C1A982DBE002AD99C /* UIColorExtension.swift */,
+				55E9DE2D1A982DBE002AD99C /* UINavigationControllerExtension.swift */,
+				55E9DE2E1A982DBE002AD99C /* UITabBarControllerExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,9 +251,11 @@
 			files = (
 				522CD5AB1A7CB26600DBA5AD /* BroadcastViewController.swift in Sources */,
 				5249F70E1A8DD26D003C68AE /* Configuration.swift in Sources */,
+				55E9DE311A982DBE002AD99C /* UITabBarControllerExtension.swift in Sources */,
+				55E9DE2F1A982DBE002AD99C /* UIColorExtension.swift in Sources */,
 				522CD5AD1A7CB2A400DBA5AD /* ReceiverViewController.swift in Sources */,
 				522CD5871A7CB0EC00DBA5AD /* AppDelegate.swift in Sources */,
-				522CD5B21A7CBF7300DBA5AD /* UIColorExtension.swift in Sources */,
+				55E9DE301A982DBE002AD99C /* UINavigationControllerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

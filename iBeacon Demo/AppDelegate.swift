@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  iBeacon Tester
+//  iBeacon Demo
 //
-//  Created by EdenLi on 2015/1/31.
+//  Created by Darktt on 15/01/31.
 //  Copyright (c) 2015年 Darktt. All rights reserved.
 //
 
@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool
     {
-        let UUID: NSUUID = iBeaconConfiguration().UUID
+        let UUID: NSUUID = iBeaconConfiguration.UUID()
         
         let beaconRegion: CLBeaconRegion = CLBeaconRegion(proximityUUID: UUID, identifier: "tw.darktt.beaconDemo")
         beaconRegion.notifyEntryStateOnDisplay = true

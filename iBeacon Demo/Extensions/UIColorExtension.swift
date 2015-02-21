@@ -1,14 +1,15 @@
 //
 //  UIColorExtension.swift
-//  iBeacon Tester
+//  iBeacon Demo
 //
-//  Created by EdenLi on 2015/1/31.
+//  Created by Darktt on 15/01/31.
 //  Copyright (c) 2015年 Darktt. All rights reserved.
 //
 
 import UIKit
 
-extension UIColor {
+extension UIColor
+{
     class func rgba(#red: UInt, green: UInt, blue: UInt, alpha: CGFloat? = 1.0) -> Self
     {
         return self(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: alpha!)

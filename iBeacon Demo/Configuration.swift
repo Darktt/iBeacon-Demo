@@ -2,7 +2,7 @@
 //  Configuration.swift
 //  iBeacon Demo
 //
-//  Created by EdenLi on 2015/2/13.
+//  Created by Darktt on 15/02/13.
 //  Copyright (c) 2015年 Darktt. All rights reserved.
 //
 
@@ -10,37 +10,23 @@ import Foundation
 
 class iBeaconConfiguration
 {
-    // You can use uuidgen in terminal to generater new one.
-    private let UUIDString: String = "7FA08BC7-A55F-45FC-85C0-0BF26F899530"
-    
-    var UUID: NSUUID {
-        get {
-            var _UUID: NSUUID = NSUUID(UUIDString: self.UUIDString)!
+    class func UUID() -> NSUUID
+    {
+        struct Static {
+            static var onceToken: dispatch_once_t = 0
+            static var instance: NSUUID? = nil
+        }
+        
+        let dispatchBlock: (() -> Void) = {
+            () -> Void in
+            // You can use uuidgen in terminal to generater new one.
+            let UUIDString: String = "7FA08BC7-A55F-45FC-85C0-0BF26F899530"
             
-            return _UUID
-        }
-    }
-}
-
-import UIKit
-
-extension UITabBarController
-{
-    public override func childViewControllerForStatusBarHidden() -> UIViewController?
-    {
-        if let _navigationController = self.selectedViewController as? UINavigationController {
-            return _navigationController.topViewController
+            Static.instance = NSUUID(UUIDString: UUIDString)
         }
         
-        return self.selectedViewController
-    }
-    
-    public override func childViewControllerForStatusBarStyle() -> UIViewController?
-    {
-        if let _navigationController = self.selectedViewController as? UINavigationController {
-            return _navigationController.topViewController
-        }
+        dispatch_once(&Static.onceToken, dispatchBlock)
         
-        return self.selectedViewController
+        return Static.instance!
     }
 }
