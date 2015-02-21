@@ -32,7 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     {
         // Override point for customization after application launch.
         application.setStatusBarHidden(false, withAnimation: .None)
-        application.setStatusBarStyle(.BlackOpaque, animated: false)
         
         return true
     }
