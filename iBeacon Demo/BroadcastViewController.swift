@@ -146,15 +146,14 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
         if (state == .PoweredOn) {
             let UUID:NSUUID! = self.beacon?.proximityUUID
             let serviceUUIDs: [CBUUID] = [CBUUID(NSUUID: UUID)]
-            let beaconData: NSDictionary! = self.beacon?.peripheralDataWithMeasuredPower(nil)
-            
+            let beaconData: Dictionary<NSObject, AnyObject> = self.beacon?.peripheralDataWithMeasuredPower(1) as! [NSObject: AnyObject]
             let major: NSNumber! = self.beacon?.major
             let minor: NSNumber! = self.beacon?.minor
             
-            let peripheralData: NSMutableDictionary = NSMutableDictionary()
-            peripheralData.setObject("iBeacon Demo", forKey: CBAdvertisementDataLocalNameKey)
-            peripheralData.setObject(serviceUUIDs, forKey: CBAdvertisementDataServiceUUIDsKey)
-            peripheralData.addEntriesFromDictionary(beaconData)
+            
+            var peripheralData: Dictionary<NSObject, AnyObject> = beaconData
+            peripheralData[CBAdvertisementDataLocalNameKey] = "iBeacon Demo"
+            peripheralData[CBAdvertisementDataServiceUUIDsKey] = serviceUUIDs
             
             self.peripheralManager!.startAdvertising(peripheralData)
         }

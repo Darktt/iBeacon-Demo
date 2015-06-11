@@ -135,7 +135,7 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
     {
         let CellIdentifier: String = "CellIdentifier"
         
-        var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as UITableViewCell?
+        var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as? UITableViewCell
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier)
         }
@@ -168,16 +168,16 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
     func locationManager(manager: CLLocationManager!, didDetermineState state: CLRegionState, forRegion region: CLRegion!)
     {
         if state == .Inside {
-            manager.startRangingBeaconsInRegion(region as CLBeaconRegion)
+            manager.startRangingBeaconsInRegion(region as! CLBeaconRegion)
             return
         }
         
-        manager.stopRangingBeaconsInRegion(region as CLBeaconRegion)
+        manager.stopRangingBeaconsInRegion(region as! CLBeaconRegion)
     }
     
     func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!)
     {
-        self.beacons = beacons as [CLBeacon]
+        self.beacons = beacons as! [CLBeacon]
         
         println("\(self.beacons.first)")
         

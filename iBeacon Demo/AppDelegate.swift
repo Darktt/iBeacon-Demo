@@ -78,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             let applicationState: UIApplicationState = UIApplication.sharedApplication().applicationState
             
             if applicationState != .Active {
-                let tabBarController: UITabBarController = self.window?.rootViewController as UITabBarController
+                let tabBarController: UITabBarController = self.window?.rootViewController as! UITabBarController
                 tabBarController.selectedIndex = 1
             }
         }
