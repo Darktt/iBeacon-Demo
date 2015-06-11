@@ -128,7 +128,7 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
         UIView.animateWithDuration(0.25, animations: animations, completion: completion)
     }
     
-    // MARK: Broadcast Beacon
+    // MARK: - Broadcast Beacon
     func advertising(#start: Bool) -> Void
     {
         if self.peripheralManager == nil {
@@ -159,7 +159,7 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
         }
     }
     
-    // MARK: CBPeripheralManager Delegate
+    // MARK: - CBPeripheralManager Delegate
     func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager!)
     {
         let state: CBPeripheralManagerState = peripheralManager!.state
