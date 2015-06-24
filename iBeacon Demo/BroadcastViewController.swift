@@ -95,7 +95,7 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
         let titleFromStatus: (Void) -> String = {
             let title: String = (self.broadcasting) ? "Start" : "Stop"
             
-            return title+" Broadcast"
+            return title + " Broadcast"
         }
         
         let buttonTitleColor: UIColor = (self.broadcasting) ? UIColor.iOS7BlueColor() : UIColor.iOS7WhiteColor()
