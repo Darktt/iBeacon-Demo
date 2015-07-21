@@ -145,7 +145,7 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
         
         if (state == .PoweredOn) {
             let UUID:NSUUID! = self.beacon?.proximityUUID
-            let serviceUUIDs: [CBUUID] = [CBUUID(NSUUID: UUID)]
+            let serviceUUIDs: Array<CBUUID> = [CBUUID(NSUUID: UUID)]
             let beaconData: Dictionary<NSObject, AnyObject> = self.beacon?.peripheralDataWithMeasuredPower(1) as! [NSObject: AnyObject]
             let major: NSNumber! = self.beacon?.major
             let minor: NSNumber! = self.beacon?.minor
