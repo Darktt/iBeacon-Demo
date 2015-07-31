@@ -49,6 +49,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         NSLog("%@", __FUNCTION__)
+        
+        let rootViewController: UITabBarController! = self.window?.rootViewController as! UITabBarController
+        let selectedViewController: UIViewController = rootViewController.selectedViewController!
+        selectedViewController.view.snapshotViewAfterScreenUpdates(true)
     }
 
     func applicationWillEnterForeground(application: UIApplication)
