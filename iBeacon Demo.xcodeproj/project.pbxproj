@@ -34,7 +34,6 @@
 
 /* Begin PBXFileReference section */
 		522CD5811A7CB0EC00DBA5AD /* iBeacon Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iBeacon Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		522CD5851A7CB0EC00DBA5AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		522CD5861A7CB0EC00DBA5AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		522CD58B1A7CB0EC00DBA5AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		522CD58D1A7CB0EC00DBA5AD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -47,6 +46,7 @@
 		522CD5AA1A7CB26600DBA5AD /* BroadcastViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BroadcastViewController.swift; sourceTree = "<group>"; };
 		522CD5AC1A7CB2A400DBA5AD /* ReceiverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiverViewController.swift; sourceTree = "<group>"; };
 		5249F70D1A8DD26D003C68AE /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		558C53B51B6BCFEE00042610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
 		55E9DE2C1A982DBE002AD99C /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		55E9DE2D1A982DBE002AD99C /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		55E9DE2E1A982DBE002AD99C /* UITabBarControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBarControllerExtension.swift; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		522CD5841A7CB0EC00DBA5AD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				522CD5851A7CB0EC00DBA5AD /* Info.plist */,
+				558C53B61B6BCFEE00042610 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -192,7 +192,6 @@
 				TargetAttributes = {
 					522CD5801A7CB0EC00DBA5AD = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = HHA6P9K77D;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -294,6 +293,14 @@
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
+		558C53B61B6BCFEE00042610 /* Info.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				558C53B51B6BCFEE00042610 /* Base */,
+			);
+			name = Info.plist;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -380,10 +387,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = "iBeacon Demo/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/iBeacon DemoTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "iBeacon Demo";
@@ -397,10 +404,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = "iBeacon Demo/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/iBeacon DemoTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "iBeacon Demo";

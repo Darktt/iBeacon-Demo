@@ -10,23 +10,13 @@ import Foundation
 
 class iBeaconConfiguration
 {
-    class func UUID() -> NSUUID
-    {
-        struct Static {
-            static var onceToken: dispatch_once_t = 0
-            static var instance: NSUUID? = nil
-        }
-        
-        let dispatchBlock: (() -> Void) = {
-            () -> Void in
-            // You can use uuidgen in terminal to generater new one.
-            let UUIDString: String = "7FA08BC7-A55F-45FC-85C0-0BF26F899530"
-            
-            Static.instance = NSUUID(UUIDString: UUIDString)
-        }
-        
-        dispatch_once(&Static.onceToken, dispatchBlock)
-        
-        return Static.instance!
+    // You can use uuidgen in terminal to generater new one.
+    private static let _UUID: NSUUID = NSUUID(UUIDString: "7FA08BC7-A55F-45FC-85C0-0BF26F899530")!
+    
+    /// Get the singleton UUID object.
+    class func UUID() -> NSUUID {
+        return _UUID
     }
+    
+    private init() {}
 }
