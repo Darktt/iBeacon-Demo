@@ -33,8 +33,6 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
         
         self.view.backgroundColor = UIColor.iOS7WhiteColor()
         
-        let userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        
         let UUID: NSUUID = iBeaconConfiguration.UUID()
         
         let major: CLBeaconMajorValue = CLBeaconMajorValue(arc4random() % 100 + 1)
@@ -129,7 +127,7 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
     }
     
     // MARK: - Broadcast Beacon
-    func advertising(#start: Bool) -> Void
+    func advertising(start start: Bool) -> Void
     {
         if self.peripheralManager == nil {
             return;
@@ -145,22 +143,17 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
         
         if (state == .PoweredOn) {
             let UUID:NSUUID! = self.beacon?.proximityUUID
-            let serviceUUIDs: Array<CBUUID> = [CBUUID(NSUUID: UUID)]
-            let beaconData: Dictionary<NSObject, AnyObject> = self.beacon?.peripheralDataWithMeasuredPower(1) as! [NSObject: AnyObject]
-            let major: NSNumber! = self.beacon?.major
-            let minor: NSNumber! = self.beacon?.minor
+            let serviceUUIDs: [CBUUID] = [CBUUID(NSUUID: UUID)]
+            let peripheralData: NSMutableDictionary = self.beacon!.peripheralDataWithMeasuredPower(1)
+            peripheralData.setObject("iBeacon Demo", forKey: CBAdvertisementDataLocalNameKey)
+            peripheralData.setObject(serviceUUIDs, forKey: CBAdvertisementDataServiceUUIDsKey)
             
-            
-            var peripheralData: Dictionary<NSObject, AnyObject> = beaconData
-            peripheralData[CBAdvertisementDataLocalNameKey] = "iBeacon Demo"
-            peripheralData[CBAdvertisementDataServiceUUIDsKey] = serviceUUIDs
-            
-            self.peripheralManager!.startAdvertising(peripheralData)
+            self.peripheralManager!.startAdvertising(nil)
         }
     }
     
     // MARK: - CBPeripheralManager Delegate
-    func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager!)
+    func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager)
     {
         let state: CBPeripheralManagerState = peripheralManager!.state
         

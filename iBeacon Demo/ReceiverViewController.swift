@@ -24,13 +24,6 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
         
         self.refreshControl!.beginRefreshing()
         self.refreshBeacons(self.refreshControl!)
-        let delayInSeconds: Double = 2.0
-        let delta: Int64 = Int64(delayInSeconds * Double(NSEC_PER_SEC))
-        
-        let popTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, delta)
-        dispatch_after(popTime, dispatch_get_main_queue()) { () -> Void in
-            
-        }
     }
     
     override func viewDidAppear(animated: Bool)
@@ -135,7 +128,7 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
     {
         let CellIdentifier: String = "CellIdentifier"
         
-        var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as? UITableViewCell
+        var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(CellIdentifier)
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier)
         }
@@ -160,12 +153,12 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //MARK: - CLocationManager Delegate Methods
     
-    func locationManager(manager: CLLocationManager!, didStartMonitoringForRegion region: CLRegion!)
+    func locationManager(manager: CLLocationManager, didStartMonitoringForRegion region: CLRegion)
     {
         manager.requestStateForRegion(region)
     }
     
-    func locationManager(manager: CLLocationManager!, didDetermineState state: CLRegionState, forRegion region: CLRegion!)
+    func locationManager(manager: CLLocationManager, didDetermineState state: CLRegionState, forRegion region: CLRegion)
     {
         if state == .Inside {
             manager.startRangingBeaconsInRegion(region as! CLBeaconRegion)
@@ -175,11 +168,11 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
         manager.stopRangingBeaconsInRegion(region as! CLBeaconRegion)
     }
     
-    func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!)
+    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion)
     {
-        self.beacons = beacons as! [CLBeacon]
+        self.beacons = beacons 
         
-        println("\(self.beacons.first)")
+        print("\(self.beacons.first)")
         
         manager.stopRangingBeaconsInRegion(region)
         self.refreshControl?.endRefreshing()

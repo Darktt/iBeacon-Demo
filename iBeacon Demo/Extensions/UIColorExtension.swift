@@ -10,9 +10,9 @@ import UIKit
 
 extension UIColor
 {
-    class func rgba(#red: UInt, green: UInt, blue: UInt, alpha: CGFloat? = 1.0) -> Self
+    class func rgba(red red: UInt, green: UInt, blue: UInt, alpha: CGFloat? = 1.0) -> Self
     {
-        return self(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: alpha!)
+        return self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: alpha!)
     }
     
     class func deepFacebookColor() -> Self
