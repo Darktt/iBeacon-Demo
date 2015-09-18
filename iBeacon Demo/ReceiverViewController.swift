@@ -48,8 +48,8 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
         self.location = CLLocationManager()
-        self.location?.delegate = self
-        self.location?.requestAlwaysAuthorization()
+        self.location!.delegate = self
+        self.location!.requestAlwaysAuthorization()
         
         let attributes: [String: AnyObject] = [NSForegroundColorAttributeName: UIColor.iOS7BlueColor()]
         let attributedTitle: NSAttributedString = NSAttributedString(string: "Receiving Beacon", attributes: attributes)
@@ -152,6 +152,14 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     //MARK: - CLocationManager Delegate Methods
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
+    {
+        guard status == .AuthorizedAlways else {
+            print("******** User not authorized !!!!")
+            return
+        }
+    }
     
     func locationManager(manager: CLLocationManager, didStartMonitoringForRegion region: CLRegion)
     {

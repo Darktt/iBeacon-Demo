@@ -143,12 +143,16 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
         
         if (state == .PoweredOn) {
             let UUID:NSUUID! = self.beacon?.proximityUUID
-            let serviceUUIDs: [CBUUID] = [CBUUID(NSUUID: UUID)]
+            let serviceUUIDs: Array<CBUUID> = [CBUUID(NSUUID: UUID)]
+            
             let peripheralData: NSMutableDictionary = self.beacon!.peripheralDataWithMeasuredPower(1)
             peripheralData.setObject("iBeacon Demo", forKey: CBAdvertisementDataLocalNameKey)
             peripheralData.setObject(serviceUUIDs, forKey: CBAdvertisementDataServiceUUIDsKey)
             
-            self.peripheralManager!.startAdvertising(nil)
+            // Why NSMutableDictionary can not convert to Dictionary<String, AnyObject> 😂
+            let _peripheralData: Dictionary<String, AnyObject> = peripheralData as NSDictionary as! Dictionary<String, AnyObject>
+            
+            self.peripheralManager!.startAdvertising(_peripheralData)
         }
     }
     
