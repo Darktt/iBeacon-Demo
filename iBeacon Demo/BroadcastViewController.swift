@@ -130,13 +130,13 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
     func advertising(start start: Bool) -> Void
     {
         if self.peripheralManager == nil {
-            return;
+            return
         }
         
         if (!start) {
             self.peripheralManager!.stopAdvertising()
             
-            return;
+            return
         }
         
         let state: CBPeripheralManagerState = self.peripheralManager!.state
