@@ -50,9 +50,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         NSLog("%@", __FUNCTION__)
         
-        let rootViewController: UITabBarController! = self.window?.rootViewController as! UITabBarController
-        let selectedViewController: UIViewController = rootViewController.selectedViewController!
-        selectedViewController.view.snapshotViewAfterScreenUpdates(true)
+        if let rootViewController: UITabBarController = self.window?.rootViewController as? UITabBarController {
+            let selectedViewController: UIViewController = rootViewController.selectedViewController!
+            selectedViewController.view.snapshotViewAfterScreenUpdates(true)
+        }
     }
 
     func applicationWillEnterForeground(application: UIApplication)
@@ -73,12 +74,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         NSLog("%@", __FUNCTION__)
     }
     
+    func application(application: UIApplication, willContinueUserActivityWithType userActivityType: String) -> Bool {
+        NSLog("%@", __FUNCTION__)
+        
+        print("\(userActivityType)")
+        
+        return true
+    }
+    
     //MARK: - CLocationManager Delegate Methods
     
     func locationManager(manager: CLLocationManager, didDetermineState state: CLRegionState, forRegion region: CLRegion)
     {
         if state == .Inside {
-            NSLog("locationManager didDetermineState INSIDE")
+            print("locationManager didDetermineState INSIDE")
             
             let applicationState: UIApplicationState = UIApplication.sharedApplication().applicationState
             
@@ -90,11 +99,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
         
         if state == .Outside {
-            NSLog("locationManager didDetermineState OUTSIDE")
+            print("locationManager didDetermineState OUTSIDE")
         }
         
         if state == .Unknown {
-            NSLog("locationManager didDetermineState UNKNOWN")
+            print("locationManager didDetermineState UNKNOWN")
         }
     }
 }
