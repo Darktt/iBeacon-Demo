@@ -15,7 +15,7 @@ class iBeaconConfiguration
     
     /// Get the singleton UUID object.
     class func UUID() -> NSUUID {
-        return _UUID
+        return self._UUID
     }
     
     private init() {}
