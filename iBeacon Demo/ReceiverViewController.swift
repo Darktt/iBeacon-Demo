@@ -56,7 +56,7 @@ class ReceiverViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let refreshControl: UIRefreshControl = UIRefreshControl()
         refreshControl.attributedTitle = attributedTitle
-        refreshControl.addTarget(self, action: Selector("refreshBeacons:"), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshBeacons), forControlEvents: UIControlEvents.ValueChanged)
         
         self.refreshControl = refreshControl
         self.tableView.addSubview(refreshControl)
