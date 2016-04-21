@@ -50,7 +50,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         print("\(#function)")
         
-        if let rootViewController: UITabBarController = self.window?.rootViewController as? UITabBarController {
+        guard let window = self.window else {
+            return
+        }
+        
+        if let rootViewController: UITabBarController = window.rootViewController as? UITabBarController {
             let selectedViewController: UIViewController = rootViewController.selectedViewController!
             selectedViewController.view.snapshotViewAfterScreenUpdates(true)
         }
