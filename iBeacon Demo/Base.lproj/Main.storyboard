@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="v6c-Xq-hCH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="v6c-Xq-hCH">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Receiver Navigation-->
@@ -14,7 +15,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lL8-iY-ze9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <connections>
                         <segue destination="FvT-Mb-gMZ" kind="relationship" relationship="rootViewController" id="kTU-Db-OkY"/>
@@ -33,21 +33,18 @@
                         <viewControllerLayoutGuide type="bottom" id="3ly-mU-1UN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kbU-RK-3FZ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="EBh-Th-WBR">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="FvT-Mb-gMZ" id="2LA-ud-asS"/>
                                     <outlet property="delegate" destination="FvT-Mb-gMZ" id="hjo-dR-06N"/>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="EBh-Th-WBR" secondAttribute="bottom" id="Rs0-Wp-hUC"/>
                             <constraint firstItem="EBh-Th-WBR" firstAttribute="top" secondItem="kbU-RK-3FZ" secondAttribute="top" id="k54-hU-xk0"/>
@@ -75,12 +72,10 @@
                         <viewControllerLayoutGuide type="bottom" id="Djd-5s-0NP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="LSw-g1-8gW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Broadcast" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="AMh-Zg-RmK">
-                                <rect key="frame" x="200" y="140" width="200" height="21"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="DQY-8c-ZzD"/>
                                 </constraints>
@@ -89,19 +84,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hl5-n9-m4q">
-                                <rect key="frame" x="232" y="417" width="137" height="34"/>
-                                <animations/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Start Broadcast">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="broadcastBeacon:" destination="1Fv-s8-Hdu" eventType="touchUpInside" id="iza-D7-FUH"/>
+                                    <action selector="broadcastBeaconWithSender:" destination="1Fv-s8-Hdu" eventType="touchUpInside" id="o1e-Ug-YsF"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Djd-5s-0NP" firstAttribute="top" secondItem="Hl5-n9-m4q" secondAttribute="bottom" constant="50" id="1zW-eo-9vk"/>
                             <constraint firstItem="Djd-5s-0NP" firstAttribute="top" secondItem="Hl5-n9-m4q" secondAttribute="bottom" constant="250" id="cTl-5e-cZq"/>
@@ -182,8 +174,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="mnz-dj-kzL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="1Fv-s8-Hdu" kind="relationship" relationship="viewControllers" id="fpE-PV-gei"/>

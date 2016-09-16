@@ -10,17 +10,17 @@ import UIKit
 import CoreLocation
 import CoreBluetooth
 
-class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
+class BroadcastViewController: UIViewController
 {
-    private var broadcasting: Bool = false
+    fileprivate var broadcasting: Bool = false
     
-    private var beacon: CLBeaconRegion?
-    private var peripheralManager: CBPeripheralManager?
+    fileprivate var beacon: CLBeaconRegion?
+    fileprivate var peripheralManager: CBPeripheralManager?
     
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var triggerButton: UIButton!
     
-    override func viewDidAppear(animated: Bool)
+    override func viewDidAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
         
@@ -33,7 +33,7 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
         
         self.view.backgroundColor = UIColor.iOS7WhiteColor()
         
-        let UUID: NSUUID = iBeaconConfiguration.UUID()
+        let UUID: UUID = iBeaconConfiguration.uuid
         
         let major: CLBeaconMajorValue = CLBeaconMajorValue(arc4random() % 100 + 1)
         let minor: CLBeaconMinorValue = CLBeaconMinorValue(arc4random() % 2 + 1)
@@ -49,43 +49,52 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
         self.peripheralManager = nil
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle
-    {
-        if self.broadcasting {
-            return .LightContent
-        }
-        
-        return .Default
-    }
-    
-    override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation
-    {
-        return .Fade
-    }
-    
-    override func prefersStatusBarHidden() -> Bool
-    {
-        return false
-    }
-    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    //MARK: - Actions
-    @IBAction func broadcastBeacon(sender: UIButton) -> Void
+}
+ 
+// MARK: - Status Bar -
+
+extension BroadcastViewController
+{
+    override var preferredStatusBarStyle: UIStatusBarStyle
     {
-        let state: CBPeripheralManagerState = self.peripheralManager!.state
+        if self.broadcasting {
+            return .lightContent
+        }
         
-        if (state == .PoweredOff && !self.broadcasting) {
-            let OKAction: UIAlertAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+        return .default
+    }
+    
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation
+    {
+        return .fade
+    }
+    
+    override var prefersStatusBarHidden: Bool
+    {
+        return false
+    }
+}
+    
+//MARK: - Actions -
+
+extension BroadcastViewController
+{
+    @IBAction fileprivate func broadcastBeacon(sender: UIButton) -> Void
+    {
+        let state: CBManagerState = self.peripheralManager!.state
+        
+        if (state == .poweredOff && !self.broadcasting) {
+            let OKAction: UIAlertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             
-            let alert: UIAlertController = UIAlertController(title: "Bluetooth OFF", message: "Please power on your Bluetooth!", preferredStyle: .Alert)
+            let alert: UIAlertController = UIAlertController(title: "Bluetooth OFF", message: "Please power on your Bluetooth!", preferredStyle: .alert)
             alert.addAction(OKAction)
             
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
             
             return
         }
@@ -98,8 +107,8 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
         
         let buttonTitleColor: UIColor = (self.broadcasting) ? UIColor.iOS7BlueColor() : UIColor.iOS7WhiteColor()
         
-        sender.setTitle(titleFromStatus(), forState: .Normal)
-        sender.setTitleColor(buttonTitleColor, forState: .Normal)
+        sender.setTitle(titleFromStatus(), for: UIControlState.normal)
+        sender.setTitleColor(buttonTitleColor, for: UIControlState.normal)
         
         let labelTextFromStatus: (Void) -> String = {
             let text: String = (self.broadcasting) ? "Not Broadcast" : "Broadcasting..."
@@ -123,11 +132,12 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
             self.advertising(start: self.broadcasting)
         }
         
-        UIView.animateWithDuration(0.25, animations: animations, completion: completion)
+        UIView.animate(withDuration: 0.25, animations: animations, completion: completion)
     }
     
     // MARK: - Broadcast Beacon
-    func advertising(start start: Bool) -> Void
+    
+    func advertising(start: Bool) -> Void
     {
         if self.peripheralManager == nil {
             return
@@ -139,41 +149,43 @@ class BroadcastViewController: UIViewController, CBPeripheralManagerDelegate
             return
         }
         
-        let state: CBPeripheralManagerState = self.peripheralManager!.state
+        let state: CBManagerState = self.peripheralManager!.state
         
-        if (state == .PoweredOn) {
-            let UUID:NSUUID! = self.beacon?.proximityUUID
-            let serviceUUIDs: Array<CBUUID> = [CBUUID(NSUUID: UUID)]
+        if (state == .poweredOn) {
+            let UUID:UUID = (self.beacon?.proximityUUID)!
+            let serviceUUIDs: Array<CBUUID> = [CBUUID(nsuuid: UUID)]
             
-            let peripheralData: NSMutableDictionary = self.beacon!.peripheralDataWithMeasuredPower(1)
-            peripheralData.setObject("iBeacon Demo", forKey: CBAdvertisementDataLocalNameKey)
-            peripheralData.setObject(serviceUUIDs, forKey: CBAdvertisementDataServiceUUIDsKey)
+            // Why NSMutableDictionary can not convert to Dictionary<String, Any> 😂
+            var peripheralData: Dictionary<String, Any> = self.beacon!.peripheralData(withMeasuredPower: 1)  as NSDictionary as! Dictionary<String, Any>
+            peripheralData[CBAdvertisementDataLocalNameKey] = "iBeacon Demo" 
+            peripheralData[CBAdvertisementDataServiceUUIDsKey] = serviceUUIDs
             
-            // Why NSMutableDictionary can not convert to Dictionary<String, AnyObject> 😂
-            let _peripheralData: Dictionary<String, AnyObject> = peripheralData as NSDictionary as! Dictionary<String, AnyObject>
-            
-            self.peripheralManager!.startAdvertising(_peripheralData)
+            self.peripheralManager!.startAdvertising(peripheralData)
         }
     }
-    
-    // MARK: - CBPeripheralManager Delegate
-    func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager)
+}
+
+// MARK: - CBPeripheralManager Delegate -
+
+extension BroadcastViewController: CBPeripheralManagerDelegate
+{
+    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager)
     {
-        let state: CBPeripheralManagerState = peripheralManager!.state
+        let state: CBManagerState = peripheralManager!.state
         
-        if state == .PoweredOff {
+        if state == .poweredOff {
             self.statusLabel.text = "Bluetooth Off"
             
             if self.broadcasting {
-                self.broadcastBeacon(self.triggerButton)
+                self.broadcastBeacon(sender: self.triggerButton)
             }
         }
         
-        if state == .Unsupported {
+        if state == .unsupported {
             self.statusLabel.text = "Unsupported Beacon"
         }
         
-        if state == .PoweredOn {
+        if state == .poweredOn {
             self.statusLabel.text = "Not Broadcast"
         }
     }

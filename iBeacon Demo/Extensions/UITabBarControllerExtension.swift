@@ -10,12 +10,12 @@ import UIKit
 
 extension UITabBarController
 {
-    public override func childViewControllerForStatusBarHidden() -> UIViewController?
+    open override var childViewControllerForStatusBarHidden: UIViewController?
     {
         return self.selectedViewController
     }
     
-    public override func childViewControllerForStatusBarStyle() -> UIViewController?
+    open override var childViewControllerForStatusBarStyle: UIViewController?
     {
         return self.selectedViewController
     }

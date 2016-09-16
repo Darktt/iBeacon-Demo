@@ -11,12 +11,7 @@ import Foundation
 class iBeaconConfiguration
 {
     // You can use uuidgen in terminal to generater new one.
-    private static let _UUID: NSUUID = NSUUID(UUIDString: "7FA08BC7-A55F-45FC-85C0-0BF26F899530")!
-    
-    /// Get the singleton UUID object.
-    class func UUID() -> NSUUID {
-        return self._UUID
-    }
+    static let uuid = UUID(uuidString: "7FA08BC7-A55F-45FC-85C0-0BF26F899530")!
     
     private init() {}
 }
