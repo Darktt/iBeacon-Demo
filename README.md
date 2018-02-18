@@ -14,11 +14,11 @@ iBeacon demo in Swift
 Launch this app in device,</br>
 after launched, You get this screen. </br>
 
-![Broadcast Off](https://raw.github.com/Darktt/iBeacon-Demo/master/Images/Broadcast Off.png)
+![Broadcast Off](https://raw.github.com/Darktt/iBeacon-Demo/master/Images/Broadcast_Off.png)
 
 Press "Start Broadcast" to start broadcast the iBeacon singal.
 
-![Broadcast On](https://raw.github.com/Darktt/iBeacon-Demo/master/Images/Broadcast On.png)
+![Broadcast On](https://raw.github.com/Darktt/iBeacon-Demo/master/Images/Broadcast_On.png)
 
 ## As Receiver
 Launch this app in device and switch second tab on bottom.</br>
@@ -34,7 +34,7 @@ When detected iBeacon singal, you can get iBeacon data like this,</br>
 
 iOS system auto detect iBeacon singal, when inside singal range,</br>
 
-![iBeacon Detect](https://raw.github.com/Darktt/iBeacon-Demo/master/Images/iBeacon Detect.png)
+![iBeacon Detect](https://raw.github.com/Darktt/iBeacon-Demo/master/Images/iBeacon_Detect.png)
 
 swipe up to launch this app, like Handoff continuity. </br>
 

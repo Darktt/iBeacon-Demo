@@ -194,7 +194,7 @@ extension ReceiverViewController: CLLocationManagerDelegate
     {
         self.beacons = beacons 
         
-        print("\(self.beacons.first)")
+        print("\(self.beacons.first!)")
         
         manager.stopRangingBeacons(in: region)
         self.refreshControl?.endRefreshing()
