@@ -99,7 +99,7 @@ extension BroadcastViewController
             return
         }
         
-        let titleFromStatus: (Void) -> String = {
+        let titleFromStatus: () -> String = {
             let title: String = (self.broadcasting) ? "Start" : "Stop"
             
             return title + " Broadcast"
@@ -110,7 +110,7 @@ extension BroadcastViewController
         sender.setTitle(titleFromStatus(), for: UIControlState.normal)
         sender.setTitleColor(buttonTitleColor, for: UIControlState.normal)
         
-        let labelTextFromStatus: (Void) -> String = {
+        let labelTextFromStatus: () -> String = {
             let text: String = (self.broadcasting) ? "Not Broadcast" : "Broadcasting..."
             
             return text

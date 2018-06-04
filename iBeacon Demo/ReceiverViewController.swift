@@ -45,13 +45,13 @@ class ReceiverViewController: UIViewController
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.barTintColor = UIColor.iOS7BlueColor()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         
         self.location = CLLocationManager()
         self.location!.delegate = self
         self.location!.requestAlwaysAuthorization()
         
-        let attributes: [String: AnyObject] = [NSForegroundColorAttributeName: UIColor.iOS7BlueColor()]
+        let attributes: [NSAttributedStringKey: AnyObject] = [NSAttributedStringKey.foregroundColor: UIColor.iOS7BlueColor()]
         let attributedTitle: NSAttributedString = NSAttributedString(string: "Receiving Beacon", attributes: attributes)
         
         let refreshControl: UIRefreshControl = UIRefreshControl()
