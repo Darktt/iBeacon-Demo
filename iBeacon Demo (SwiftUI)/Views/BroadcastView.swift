@@ -58,9 +58,28 @@ public struct BroadcastView: View
     }
 }
 
+// MARK: - Actions -
+
+private extension BroadcastView {
+    
+    func buttonAction() {
+        
+        withAnimation(.easeInOut(duration: 0.25)) {
+            
+            self.isBroadcasting.toggle()
+        }
+        
+        self.titleText = self.isBroadcasting ? "Broadcasting..." : "Not Broadcast"
+        self.buttonText = self.isBroadcasting ? "Stop boardcast" : "Start boardcast"
+        
+        self.isPresentAlert = (self.broadcaster.state != .poweredOn)
+        self.isBroadcasting ? self.broadcaster.startBroadcast() : self.broadcaster.stopBroadcast()
+    }
+}
+
 // MARK: - Private Methods -
 
-fileprivate extension BroadcastView
+private extension BroadcastView
 {
     var backgroundColor: some View {
         
@@ -99,20 +118,6 @@ fileprivate extension BroadcastView
     
     // MARK: - Methods -
     
-    func buttonAction() {
-        
-        withAnimation(.easeInOut(duration: 0.25)) {
-            
-            self.isBroadcasting.toggle()
-        }
-        
-        self.titleText = self.isBroadcasting ? "Broadcasting..." : "Not Broadcast"
-        self.buttonText = self.isBroadcasting ? "Stop boardcast" : "Start boardcast"
-        
-        self.isPresentAlert = (self.broadcaster.state != .poweredOn)
-        self.isBroadcasting ? self.broadcaster.startBroadcast() : self.broadcaster.stopBroadcast()
-    }
-    
     func alertContent() -> Alert {
         
         let titleText: Text = self.alertTitleText
@@ -123,6 +128,8 @@ fileprivate extension BroadcastView
         return alert
     }
 }
+
+// MARK: - Previews -
 
 struct BroadcastView_Previews: PreviewProvider
 {

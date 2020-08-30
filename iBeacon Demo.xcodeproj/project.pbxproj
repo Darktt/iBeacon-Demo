@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		5249F70E1A8DD26D003C68AE /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5249F70D1A8DD26D003C68AE /* Configuration.swift */; };
 		52A752101A7F200D00BF5F12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522CD58A1A7CB0EC00DBA5AD /* Main.storyboard */; };
 		52A752111A7F201200BF5F12 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522CD58F1A7CB0EC00DBA5AD /* LaunchScreen.xib */; };
+		5501AE1424FB5626002BD580 /* SwiftUIPullToRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 5501AE1324FB5626002BD580 /* SwiftUIPullToRefresh */; };
 		5566FCBF24F0D39D001D3097 /* PreviewDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566FCBE24F0D368001D3097 /* PreviewDeviceExtension.swift */; };
 		5566FCC024F0D3A1001D3097 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566FCBD24F0D368001D3097 /* ViewExtension.swift */; };
 		5566FCC324F0F39C001D3097 /* Broadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566FCC224F0F39C001D3097 /* Broadcaster.swift */; };
@@ -29,6 +30,7 @@
 		55C16B2B24F0CBD800B41246 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55C16B2A24F0CBD800B41246 /* Preview Assets.xcassets */; };
 		55C16B2E24F0CBD800B41246 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55C16B2C24F0CBD800B41246 /* LaunchScreen.storyboard */; };
 		55C16B3624F0D05300B41246 /* BroadcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C16B3524F0D05300B41246 /* BroadcastView.swift */; };
+		55C284CB24FB470C001DA9EC /* ReceiverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C284CA24FB470C001DA9EC /* ReceiverView.swift */; };
 		55E9DE2F1A982DBE002AD99C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E9DE2C1A982DBE002AD99C /* UIColorExtension.swift */; };
 		55E9DE301A982DBE002AD99C /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E9DE2D1A982DBE002AD99C /* UINavigationControllerExtension.swift */; };
 		55E9DE311A982DBE002AD99C /* UITabBarControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E9DE2E1A982DBE002AD99C /* UITabBarControllerExtension.swift */; };
@@ -62,6 +64,7 @@
 		55C16B2F24F0CBD800B41246 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55C16B3324F0CBEA00B41246 /* iBeacon Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iBeacon Demo.entitlements"; sourceTree = "<group>"; };
 		55C16B3524F0D05300B41246 /* BroadcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastView.swift; sourceTree = "<group>"; };
+		55C284CA24FB470C001DA9EC /* ReceiverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverView.swift; sourceTree = "<group>"; };
 		55E9DE2C1A982DBE002AD99C /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		55E9DE2D1A982DBE002AD99C /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		55E9DE2E1A982DBE002AD99C /* UITabBarControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBarControllerExtension.swift; sourceTree = "<group>"; };
@@ -81,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5501AE1424FB5626002BD580 /* SwiftUIPullToRefresh in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +193,7 @@
 			children = (
 				55C16B2524F0CBD500B41246 /* ContentView.swift */,
 				55C16B3524F0D05300B41246 /* BroadcastView.swift */,
+				55C284CA24FB470C001DA9EC /* ReceiverView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -236,6 +241,9 @@
 			dependencies = (
 			);
 			name = "iBeacon Demo (SwiftUI)";
+			packageProductDependencies = (
+				5501AE1324FB5626002BD580 /* SwiftUIPullToRefresh */,
+			);
 			productName = "iBeacon Demo (SwiftUI)";
 			productReference = 55C16B1F24F0CBD500B41246 /* iBeacon Demo (SwiftUI).app */;
 			productType = "com.apple.product-type.application";
@@ -278,6 +286,9 @@
 				Base,
 			);
 			mainGroup = 522CD5781A7CB0EC00DBA5AD;
+			packageReferences = (
+				5501AE1224FB5626002BD580 /* XCRemoteSwiftPackageReference "SwiftUI-PullToRefresh" */,
+			);
 			productRefGroup = 522CD5821A7CB0EC00DBA5AD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -336,6 +347,7 @@
 				55C16B2224F0CBD500B41246 /* AppDelegate.swift in Sources */,
 				55C16B3624F0D05300B41246 /* BroadcastView.swift in Sources */,
 				55C16B2424F0CBD500B41246 /* SceneDelegate.swift in Sources */,
+				55C284CB24FB470C001DA9EC /* ReceiverView.swift in Sources */,
 				5566FCC724F1166D001D3097 /* DTLog.swift in Sources */,
 				55C16B2624F0CBD500B41246 /* ContentView.swift in Sources */,
 				5566FCBF24F0D39D001D3097 /* PreviewDeviceExtension.swift in Sources */,
@@ -478,7 +490,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -495,7 +508,10 @@
 				DEVELOPMENT_TEAM = SJV2APGW7E;
 				INFOPLIST_FILE = "$(SRCROOT)/iBeacon Demo/Base.lproj/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.darktt.iBeacon;
 				PRODUCT_NAME = "iBeacon Demo";
 				PROVISIONING_PROFILE = "";
@@ -517,7 +533,10 @@
 				DEVELOPMENT_TEAM = SJV2APGW7E;
 				INFOPLIST_FILE = "$(SRCROOT)/iBeacon Demo/Base.lproj/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.darktt.iBeacon;
 				PRODUCT_NAME = "iBeacon Demo";
 				PROVISIONING_PROFILE = "";
@@ -547,7 +566,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "iBeacon Demo (SwiftUI)/Resource/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -581,7 +603,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "iBeacon Demo (SwiftUI)/Resource/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.darktt.iBeacon-Demo.SwiftUI";
@@ -623,6 +648,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5501AE1224FB5626002BD580 /* XCRemoteSwiftPackageReference "SwiftUI-PullToRefresh" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/phuhuynh2411/SwiftUI-PullToRefresh.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5501AE1324FB5626002BD580 /* SwiftUIPullToRefresh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5501AE1224FB5626002BD580 /* XCRemoteSwiftPackageReference "SwiftUI-PullToRefresh" */;
+			productName = SwiftUIPullToRefresh;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 522CD5791A7CB0EC00DBA5AD /* Project object */;
 }

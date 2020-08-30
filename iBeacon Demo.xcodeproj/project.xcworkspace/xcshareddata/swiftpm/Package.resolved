@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SwiftUIPullToRefresh",
+        "repositoryURL": "https://github.com/phuhuynh2411/SwiftUI-PullToRefresh.git",
+        "state": {
+          "branch": null,
+          "revision": "20d4652902625a2a3563e57c06368a95be73df18",
+          "version": "1.0.6"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

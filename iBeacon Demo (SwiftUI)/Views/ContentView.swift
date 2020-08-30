@@ -19,14 +19,18 @@ public struct ContentView: View
                     Image(systemName: "antenna.radiowaves.left.and.right")
                     Text("Boradcast")
                 }
+                .edgesIgnoringSafeArea(.top)
             
-            Text("Another Tab")
-                .tabItem {
-                    Image(systemName: "person.3.fill")
-                    Text("Receiver")
-                }
+            NavigationView {
+                
+                ReceiverView()
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
+            .tabItem {
+                Image(systemName: "person.3.fill")
+                Text("Receiver")
+            }
         }
-        .edgesIgnoringSafeArea(.top)
     }
 }
 
@@ -34,7 +38,16 @@ struct ContentView_Previews: PreviewProvider
 {
     static var previews: some View {
         
-        ContentView()
-            .previewDevice(.iPhoneX)
+        Group {
+            
+            ContentView()
+                .previewDevice(.iPhoneX)
+            
+            ContentView()
+                .previewDevice(.iPhone7)
+            
+            ContentView()
+            .previewDevice(nil)
+        }
     }
 }
