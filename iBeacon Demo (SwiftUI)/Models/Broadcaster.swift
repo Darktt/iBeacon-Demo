@@ -12,6 +12,8 @@ import CoreBluetooth
 
 public class Broadcaster: ObservableObject
 {
+    // MARK: - Properties -
+    
     @Published
     public var state: CBManagerState = .unknown
     
@@ -25,13 +27,17 @@ public class Broadcaster: ObservableObject
         BroadcasterDelegate(parent: self)
     }()
     
-    public init() {
+    // MARK: - Methods -
+    // MARK: Initial Method
+    
+    public init()
+    {
         
         self.state = self.manager.state
     }
     
-    func startBroadcast() {
-        
+    func startBroadcast()
+    {
         guard self.state == .poweredOn else {
             
             Delay(duration: 0.25, execute: self.startBroadcast)
@@ -51,8 +57,8 @@ public class Broadcaster: ObservableObject
         self.manager.startAdvertising(peripheralData)
     }
     
-    func stopBroadcast() {
-        
+    func stopBroadcast()
+    {
         self.manager.stopAdvertising()
     }
 }
@@ -61,7 +67,12 @@ public class Broadcaster: ObservableObject
 
 fileprivate class BroadcasterDelegate: NSObject, CBPeripheralManagerDelegate
 {
+    // MARK: - Properties -
+    
     weak var parent: Broadcaster?
+    
+    // MARK: - Methods -
+    // MARK: Initial Method
     
     init(parent: Broadcaster)
     {
@@ -75,5 +86,10 @@ fileprivate class BroadcasterDelegate: NSObject, CBPeripheralManagerDelegate
         DTLog("Update state to: \(peripheral.state.rawValue)")
         
         self.parent?.state = peripheral.state
+    }
+    
+    func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?)
+    {
+        DTLog("Stat advertising with error: \(error?.localizedDescription ?? "no error")")
     }
 }

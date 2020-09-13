@@ -12,8 +12,10 @@ import SwiftUIPullToRefresh
 
 struct ReceiverView: View
 {
-    @State
-    var beacons: [String] = ReceiverView.generateBeacons(by: 10)
+    // MARK: - Properties -
+    
+    @ObservedObject
+    var receiver: Receiver = .init()
     
     @State
     var showRefreshView: Bool = false
@@ -22,13 +24,13 @@ struct ReceiverView: View
         
         RefreshableList(showRefreshView: self.$showRefreshView, action: self.refreshAction) {
             
-            ForEach(self.beacons, id: \.self, content: {
+            ForEach(self.receiver.beacons, id: \.self, content: {
                 
                 beacon in
                 
                 VStack(alignment: .leading) {
                     
-                    Text(beacon)
+                    Text(beacon.uuid.uuidString)
                     Divider()
                 }
             })
@@ -43,10 +45,12 @@ private extension  ReceiverView
 {
     func refreshAction()
     {
-        self.beacons = ReceiverView.generateBeacons(by: 20)
+        self.receiver.startReceiving()
         
-        Delay(duration: 1.0) {
+        Delay(duration: 20.0) {
+            
             self.showRefreshView = false
+            self.receiver.stopReceiving()
         }
     }
 }
@@ -55,17 +59,7 @@ private extension  ReceiverView
 
 private extension ReceiverView
 {
-    static func generateBeacons(by count: Int) -> [String] {
-        
-        let beacons: [String] = (0 ... count).map {
-            
-            _ in
-            
-            "\(Int.random(in: 0 ... 100))"
-        }
-        
-        return beacons
-    }
+    
 }
 
 // MARK: - Previews -

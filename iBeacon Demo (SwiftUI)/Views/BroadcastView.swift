@@ -10,6 +10,8 @@ import SwiftUI
 
 public struct BroadcastView: View
 {
+    // MARK: - Properties -
+    
     @State
     private var titleText: String = "Not Broadcast"
     

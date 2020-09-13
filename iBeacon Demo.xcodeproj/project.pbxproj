@@ -31,6 +31,7 @@
 		55C16B2E24F0CBD800B41246 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55C16B2C24F0CBD800B41246 /* LaunchScreen.storyboard */; };
 		55C16B3624F0D05300B41246 /* BroadcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C16B3524F0D05300B41246 /* BroadcastView.swift */; };
 		55C284CB24FB470C001DA9EC /* ReceiverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C284CA24FB470C001DA9EC /* ReceiverView.swift */; };
+		55D2914E25010DD70040DB47 /* Receiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D2914C25010DD10040DB47 /* Receiver.swift */; };
 		55E9DE2F1A982DBE002AD99C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E9DE2C1A982DBE002AD99C /* UIColorExtension.swift */; };
 		55E9DE301A982DBE002AD99C /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E9DE2D1A982DBE002AD99C /* UINavigationControllerExtension.swift */; };
 		55E9DE311A982DBE002AD99C /* UITabBarControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E9DE2E1A982DBE002AD99C /* UITabBarControllerExtension.swift */; };
@@ -65,6 +66,7 @@
 		55C16B3324F0CBEA00B41246 /* iBeacon Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iBeacon Demo.entitlements"; sourceTree = "<group>"; };
 		55C16B3524F0D05300B41246 /* BroadcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastView.swift; sourceTree = "<group>"; };
 		55C284CA24FB470C001DA9EC /* ReceiverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverView.swift; sourceTree = "<group>"; };
+		55D2914C25010DD10040DB47 /* Receiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receiver.swift; sourceTree = "<group>"; };
 		55E9DE2C1A982DBE002AD99C /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		55E9DE2D1A982DBE002AD99C /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		55E9DE2E1A982DBE002AD99C /* UITabBarControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBarControllerExtension.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				5566FCC624F1166D001D3097 /* DTLog.swift */,
 				5566FCC424F10EDE001D3097 /* BeaconRegion.swift */,
 				5566FCC224F0F39C001D3097 /* Broadcaster.swift */,
+				55D2914C25010DD10040DB47 /* Receiver.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -261,7 +264,6 @@
 				TargetAttributes = {
 					522CD5801A7CB0EC00DBA5AD = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = SJV2APGW7E;
 						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -347,6 +349,7 @@
 				55C16B2224F0CBD500B41246 /* AppDelegate.swift in Sources */,
 				55C16B3624F0D05300B41246 /* BroadcastView.swift in Sources */,
 				55C16B2424F0CBD500B41246 /* SceneDelegate.swift in Sources */,
+				55D2914E25010DD70040DB47 /* Receiver.swift in Sources */,
 				55C284CB24FB470C001DA9EC /* ReceiverView.swift in Sources */,
 				5566FCC724F1166D001D3097 /* DTLog.swift in Sources */,
 				55C16B2624F0CBD500B41246 /* ContentView.swift in Sources */,
@@ -505,14 +508,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = SJV2APGW7E;
+				DEVELOPMENT_TEAM = Y5PE34DHT4;
 				INFOPLIST_FILE = "$(SRCROOT)/iBeacon Demo/Base.lproj/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.darktt.iBeacon;
+				PRODUCT_BUNDLE_IDENTIFIER = com.darktt.iBeacon.1;
 				PRODUCT_NAME = "iBeacon Demo";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -530,14 +533,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = SJV2APGW7E;
+				DEVELOPMENT_TEAM = Y5PE34DHT4;
 				INFOPLIST_FILE = "$(SRCROOT)/iBeacon Demo/Base.lproj/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.darktt.iBeacon;
+				PRODUCT_BUNDLE_IDENTIFIER = com.darktt.iBeacon.1;
 				PRODUCT_NAME = "iBeacon Demo";
 				PROVISIONING_PROFILE = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -562,10 +565,11 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_ASSET_PATHS = "\"iBeacon Demo (SwiftUI)/Preview Content\"";
 				DEVELOPMENT_TEAM = Y5PE34DHT4;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "iBeacon Demo (SwiftUI)/Resource/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -599,10 +603,11 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"iBeacon Demo (SwiftUI)/Preview Content\"";
 				DEVELOPMENT_TEAM = Y5PE34DHT4;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "iBeacon Demo (SwiftUI)/Resource/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
